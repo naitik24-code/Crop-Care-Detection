@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Library | Botanical Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#aae4ea",
+                    "on-error": "#fff7f6",
+                    "secondary-dim": "#345a51",
+                    "on-tertiary": "#e8fdff",
+                    "inverse-on-surface": "#9b9d9e",
+                    "on-primary-container": "#1d5c42",
+                    "error": "#a83836",
+                    "primary-fixed-dim": "#a3e2c0",
+                    "on-error-container": "#6e0a12",
+                    "on-secondary": "#e3fff6",
+                    "primary-fixed": "#b1f0ce",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d5dbdd",
+                    "primary-dim": "#1f5e44",
+                    "secondary-fixed-dim": "#b3ddd1",
+                    "on-tertiary-fixed-variant": "#2d676d",
+                    "primary": "#2d6a4f",
+                    "on-primary-fixed": "#014931",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#c1ebdf",
+                    "on-surface-variant": "#5a6062",
+                    "surface-bright": "#f8f9fa",
+                    "outline": "#767c7e",
+                    "secondary": "#40665d",
+                    "surface-container-high": "#e5e9eb",
+                    "surface-container-highest": "#dee3e6",
+                    "on-background": "#2d3335",
+                    "inverse-primary": "#beffdc",
+                    "error-dim": "#67040d",
+                    "on-secondary-fixed-variant": "#3c6359",
+                    "tertiary-fixed": "#b8f2f9",
+                    "on-secondary-container": "#325950",
+                    "surface": "#f8f9fa",
+                    "error-container": "#fa746f",
+                    "on-tertiary-container": "#215d63",
+                    "on-surface": "#2d3335",
+                    "on-primary-fixed-variant": "#29664c",
+                    "on-tertiary-fixed": "#034b50",
+                    "tertiary-container": "#b8f2f9",
+                    "surface-container-low": "#f1f4f5",
+                    "on-secondary-fixed": "#1f463d",
+                    "surface-tint": "#2d6a4f",
+                    "primary-container": "#b1f0ce",
+                    "tertiary-dim": "#1e5b61",
+                    "surface-container": "#ebeef0",
+                    "secondary-container": "#c1ebdf",
+                    "surface-variant": "#dee3e6",
+                    "outline-variant": "#adb3b5",
+                    "on-primary": "#e6ffee",
+                    "tertiary": "#2d676d",
+                    "inverse-surface": "#0c0f10"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .botanical-shadow {
+            box-shadow: 0 20px 40px rgba(45, 106, 79, 0.06);
+        }
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            background-image: radial-gradient(circle at 100% 0%, rgba(45, 106, 79, 0.02) 0%, transparent 50%),
+                              radial-gradient(circle at 0% 100%, rgba(45, 106, 79, 0.02) 0%, transparent 50%);
+        }
+        h1, h2, h3, .headline {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 bottom-0 z-40 flex flex-col py-6 h-screen w-64 border-r-0 bg-emerald-900 dark:bg-emerald-950 shadow-xl dark:shadow-none font-manrope text-sm font-medium tracking-tight">
+<div class="text-2xl font-bold text-white tracking-tightest mb-8 px-4">PlantWise AI</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200 scale-95 active:scale-90" href="index.html">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200 scale-95 active:scale-90" href="past_analyses.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Past Analyses</span>
+</a>
+<a class="flex items-center gap-3 bg-white/10 text-white rounded-xl px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200 scale-95 active:scale-90" href="library.html">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Library</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200 scale-95 active:scale-90" href="settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-emerald-800/20 flex flex-col gap-1">
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<div class="px-4 py-4 mt-2 mx-2 bg-emerald-800/20 rounded-xl flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-emerald-700 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="h-full w-full object-cover" data-alt="professional portrait of a botanist in a sunlit greenhouse workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfYgZPenAHzvmMg4_OZ3xHLVnoNcTyhGTfbifCQDWV1IOj7tgiQeADrZLpMA23J4JwAZKnJ4R3bh8YaqOpPchHj88JY0inRsjoWTjnzJJeOokfywrMFS5dkZ3VBsGpEDb6-9y0ZHHvPGiBLD21vx7-DBRfomHtQXnedtFPhJdGFEKUu39W34KcabIE-DAvK93lF6SqGYdSt48F5nE11_MLpH3_Hv9w1CsdBRmzh221880ssk0PJAZgF-Tg9jYlyWdYyhp4Nt9eb5I"/>
+</div>
+<div>
+<div class="text-white font-semibold text-xs">Expert Tier</div>
+<div class="text-emerald-300/70 text-[10px]">Account Settings</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-8 z-30 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl flat no shadows font-manrope text-sm font-semibold uppercase tracking-widest">
+<div class="hidden md:block text-emerald-900 dark:text-white font-black text-lg normal-case tracking-tight">Botanical Intelligence</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<input class="w-80 bg-surface-container-highest border-none rounded-full py-2 px-10 text-sm focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline-variant" placeholder="Search knowledge base..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-800 dark:text-emerald-100">
+<button class="p-2 rounded-full hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-all active:opacity-70">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-all active:opacity-70">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Hero Section: Editorial Authority -->
+<section class="mb-12">
+<div class="flex items-end justify-between gap-8 mb-6">
+<div class="max-w-2xl">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">Digital Archive</span>
+<h1 class="text-5xl font-extrabold text-on-background tracking-tight mb-4">Botanical Knowledge Base</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed">Access our expert-curated repository of plant health informatics, treatment protocols, and preventative strategies for global flora.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold flex items-center gap-2 botanical-shadow hover:bg-primary-dim transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        New Analysis
+                    </button>
+</div>
+</div>
+<!-- Categories Chips -->
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-2 rounded-full bg-primary-container text-on-primary-container font-semibold text-sm">All Research</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:bg-primary-container/30 transition-colors font-medium text-sm">Fungal Pathogens</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:bg-primary-container/30 transition-colors font-medium text-sm">Pest Control</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:bg-primary-container/30 transition-colors font-medium text-sm">Nutrient Deficiency</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:bg-primary-container/30 transition-colors font-medium text-sm">Soil Science</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant hover:bg-primary-container/30 transition-colors font-medium text-sm">Tropical Diseases</button>
+</div>
+</section>
+<!-- Bento Grid: Featured Content -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<!-- Featured Large Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl overflow-hidden botanical-shadow group">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 relative overflow-hidden">
+<img class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close-up of a leaf with microscopic detail of fungal spores in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSoEM2BPCP4-cALbMGnr4ZDK-lzknlcKA0ziwx56okvZckpdoz_TuzOuh5gXNzOrWYMkXs5btaIoPzZ1WESGSN2RXvfupnjGRHJdFqLXYHmSGnLVkq7oL-0BQPoX_EmdZC4R66vBZ4coB6H8J5YVQMVJZAhKD7JpmKjnoS7Pqhz5bNu4wVGZ08LpzWZptcvkJlFsgjRBUVDzORwjMizAJsoTHP3xkA6rotnkan-GHh_fYsRnB0Gk_4sUfU2yLp7MyjT0N3oSF6fqw"/>
+<div class="absolute top-4 left-4 bg-tertiary-container/90 backdrop-blur-md text-on-tertiary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Top Priority</div>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<div class="h-1 w-8 bg-primary"></div>
+<span class="text-primary font-bold text-xs uppercase">Emerging Threats</span>
+</div>
+<h2 class="text-3xl font-extrabold mb-4 leading-tight">Advanced Management of Rust Fungi (Pucciniales)</h2>
+<p class="text-on-surface-variant mb-6 leading-relaxed">A comprehensive guide on identifying and neutralizing rust outbreaks in high-density cereal crops and ornamental gardens.</p>
+<div class="flex items-center gap-4">
+<button class="text-primary font-bold flex items-center gap-2 group/btn">
+                                Read Full Protocol 
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats/Insight Panel -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="flex-1 bg-primary text-on-primary p-8 rounded-xl botanical-shadow relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-10 rotate-12" data-icon="psychology">psychology</span>
+<h3 class="text-xl font-bold mb-2">AI Diagnostic Insights</h3>
+<p class="text-on-primary/80 text-sm mb-6">Our neural network has processed over 1.2M plant samples this week, identifying a 14% uptick in Powdery Mildew cases in temperate zones.</p>
+<div class="bg-white/10 p-4 rounded-lg backdrop-blur-sm">
+<div class="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-2">Confidence Level</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
+<div class="w-[98%] h-full bg-primary-fixed"></div>
+</div>
+<span class="text-xs font-bold">98.4%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-high p-8 rounded-xl flex items-center justify-between">
+<div>
+<div class="text-on-surface-variant text-sm font-semibold mb-1">Knowledge Coverage</div>
+<div class="text-4xl font-black text-emerald-900 tracking-tighter">48,202</div>
+<div class="text-xs text-on-surface-variant/70 mt-1 uppercase font-bold">Documented Species</div>
+</div>
+<span class="material-symbols-outlined text-emerald-800 text-5xl" data-icon="potted_plant">potted_plant</span>
+</div>
+</div>
+</div>
+<!-- Section: Pathogen Knowledge Base (Asymmetric Grid) -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-extrabold text-on-background">Treatment Protocols</h3>
+<button class="text-primary font-bold text-sm flex items-center gap-1">
+                    View Archive 
+                    <span class="material-symbols-outlined" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Disease Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg p-1 botanical-shadow group cursor-pointer">
+<div class="relative h-56 rounded-lg overflow-hidden mb-6">
+<img class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close up of vegetable leaves with yellow spots indicating nutrient deficiency against a soft natural bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsunn-eYsYhADsU0q3wKSiFKusVGKPPIqB8Lwzhal2QO5hC6lfnSFboBK9d7diS5hnRm4zOofgCb0EsDnE2MTGpiIDc3bBrb23OxN8EUkkRDPVd1xWEpEZqevbRYOZCtXJAz_LUvWUahT2-JzYFzHZMNA7-86WJl4lSOrWzEkPyh6ToL0OErRljyoAoJ-B-_7e-qa5nrFtDMJRapzfIYqD-GYEelMQWe916v57EQXtgV3laVxUvLKDJ57aYHSejBnugoc7PhaPwuw"/>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Fungal</span>
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Leaf Spot</span>
+</div>
+</div>
+<div class="px-5 pb-6">
+<h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Cercospora Leaf Spot</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Affecting a wide range of hosts including sugar beets, spinach, and Swiss chard, this fungal pathogen thrives in warm humidity.</p>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-surface-container-lowest bg-slate-200 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="profile of a professional female researcher in a laboratory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK8y5Fe41TcXvcfjt81NDzHljC8INudlYGjwroohLI8m4w14Lhz3VSgP5kjF3-X76xurcgoiWLeA6nB4ZfsFZi4XRDcQp_vK9JP0HmtTAYePyFbQevSYv5ZwHMSLW56CN4j8w-5qaBVniiv9KOGuem0N72AKMCMBGqES6Y6Q1L3emQmQkOSXyQAxr5pIo2rFdGvpw7wdxMgkr4006eXgoUbuJoFr2DuhugdSDlHvVBKRhK1UCKVIEO4FVzqJ4OGwtCdqWPoswqNpo"/>
+</div>
+<div class="h-8 w-8 rounded-full border-2 border-surface-container-lowest bg-slate-200 overflow-hidden flex items-center justify-center bg-primary-container text-[10px] font-bold text-on-primary-container">
+                                    +3
+                                </div>
+</div>
+<span class="text-xs font-semibold text-outline">Updated 2d ago</span>
+</div>
+</div>
+</div>
+<!-- Disease Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg p-1 botanical-shadow group cursor-pointer">
+<div class="relative h-56 rounded-lg overflow-hidden mb-6">
+<img class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="macro shot of garden pest insects on a vibrant green leaf stem with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDl8mzhHete1MHHRabyRKSCXmb-zE2OppMbLyfS5Ex9PoBeCnZXtIXgc56B9ySl593zeSVELxOIcgk9ruQOQdi009_a5Zau0VMghj7WdOha6OaVyuda1G_aiVTmm3DL3KRHDCd2CALcgQytXn5FUpo1m59vn1blFsEKDGeWE9A5PahkJDncbKwL8AEmixb7BT-S2VAF8Yv8h7ya804r4iNCpPvtdJt1awALzhuVsdTM-9EfoLcx35_8soQnoIvpkai1_DWsib6AOA"/>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Insect</span>
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Aphids</span>
+</div>
+</div>
+<div class="px-5 pb-6">
+<h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Aphid Infestation Mgmt</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Biological control methods and organic deterrents for preventing colonial insect damage in indoor and outdoor settings.</p>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-surface-container-lowest bg-slate-200 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="portrait of a male agricultural expert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwPXPzcpWM9koaA7Tk-7z-zhW7TNn5u8UyzsB4VEpnuY3Funkj-sEyWJjZV948giEJYVtfCQ8_-0PA7TKAl2Sv96wJa6aNgJAr5JwssngyEU6O869lZJpvyIEUqCla0i57TNZETlEw84Ci_3gEc7FwEP5YcfLX-gSfuTpGw-ZAkxBMS4l3zdcsAD4jmXpFy0EdRI-G7diL4Cz-Jt8Yc6SM3WDvXlP2-TgrRnLjG4h5CUx5Dk9-bifFrJgyZHtf6WPZiFdDu1FGj9o"/>
+</div>
+</div>
+<span class="text-xs font-semibold text-outline">Updated 1w ago</span>
+</div>
+</div>
+</div>
+<!-- Disease Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg p-1 botanical-shadow group cursor-pointer">
+<div class="relative h-56 rounded-lg overflow-hidden mb-6">
+<img class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="close up of wilting plant leaves due to severe drought and soil dehydration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdsE2EtNsiLvgu7S30U_Ca1TMMaGI5oz8s4M200pl-1fcFpADcuesvlxmkFjF7E_hGlkyiidU7KqnWfubG1Tehli2J-au4JWMh3O_tZI-aoOSxrmUJiaKV-H1LSNSdwL1TxJTjnmzTAGJuTYlCY8s0exV-XEcw3A_nUK3gIBmPW_jpTXLijUhSc4zx7n8FOlj6r1fuD1_Zf3CeKGAi8GTEkAcIZhCFYxIKwQzM731_btQgESrCWDC9Oh4MFu_RLfZbqC3NQt_fm-o"/>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Environmental</span>
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary uppercase">Moisture</span>
+</div>
+</div>
+<div class="px-5 pb-6">
+<h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Hydraulic Stress Response</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">How to identify the early signs of root rot vs. underwatering using thermal imaging and soil moisture analysis.</p>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container">
+<div class="flex -space-x-2">
+<div class="h-8 w-8 rounded-full border-2 border-surface-container-lowest bg-slate-200 overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="portrait of a female botanical data analyst" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARN8Tqq3Nt2LNYNvUJeKFQlR6hONQm-vMb1n---4uOPQz1WLq0y0NcrskMfIQrkjqLNMGB6hsGVuIhBrXvYpq3UQCYf2vqe-3yIj2etpvxsd7810K97TqMD72K8LljU73NPCCPrxRCqk5wqDk2fNwRT__3JBMeceF7vqdVwkEfaknHzDElcfmczrNWVV_DiOkf2COdAzws5YOZYQQ3p3SSkilaQbms1KgN_nWus_zhoQ9spysC4T7kfV26_fRO65fOOdJC9gPjwso"/>
+</div>
+</div>
+<span class="text-xs font-semibold text-outline">Updated 4h ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Treatment Protocols Detailed List -->
+<section class="bg-surface-container-low rounded-xl p-8 mb-12">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-2xl font-extrabold mb-1">Standardized Care Sheets</h3>
+<p class="text-sm text-on-surface-variant">Step-by-step recovery sequences for high-value botanical assets.</p>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Protocol Row 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 hover:shadow-md transition-shadow group">
+<div class="h-12 w-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-bold text-lg">Systemic Fungicide Schedule</h4>
+<span class="px-2 py-0.5 rounded bg-tertiary-container text-on-tertiary-container text-[10px] font-black uppercase">Advanced</span>
+</div>
+<p class="text-sm text-on-surface-variant">Preventative rotation for commercial glasshouse rose production.</p>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<div class="text-xs font-bold text-on-surface">14 Days</div>
+<div class="text-[10px] text-outline uppercase font-semibold">Treatment Duration</div>
+</div>
+<button class="h-10 w-10 rounded-full border border-surface-container flex items-center justify-center hover:bg-primary-container hover:border-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Protocol Row 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 hover:shadow-md transition-shadow group">
+<div class="h-12 w-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-bold text-lg">Nitrogen Rectification Plan</h4>
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container text-[10px] font-black uppercase">Standard</span>
+</div>
+<p class="text-sm text-on-surface-variant">Immediate foliar application protocol for chlorotic leaf recovery.</p>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<div class="text-xs font-bold text-on-surface">5 Days</div>
+<div class="text-[10px] text-outline uppercase font-semibold">Treatment Duration</div>
+</div>
+<button class="h-10 w-10 rounded-full border border-surface-container flex items-center justify-center hover:bg-primary-container hover:border-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Protocol Row 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 hover:shadow-md transition-shadow group">
+<div class="h-12 w-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="bug_report">bug_report</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-bold text-lg">Integrated Pest Mgmt (IPM)</h4>
+<span class="px-2 py-0.5 rounded bg-tertiary-container text-on-tertiary-container text-[10px] font-black uppercase">Expert</span>
+</div>
+<p class="text-sm text-on-surface-variant">Deployment of predatory mites in citrus groves for Spider Mite control.</p>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<div class="text-xs font-bold text-on-surface">21 Days</div>
+<div class="text-[10px] text-outline uppercase font-semibold">Treatment Duration</div>
+</div>
+<button class="h-10 w-10 rounded-full border border-surface-container flex items-center justify-center hover:bg-primary-container hover:border-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter/Footer Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div class="bg-emerald-900 rounded-xl p-8 text-white flex flex-col justify-center relative overflow-hidden">
+<div class="absolute -top-12 -right-12 h-64 w-64 bg-emerald-800 rounded-full blur-3xl opacity-40"></div>
+<h3 class="text-2xl font-bold mb-4 relative z-10">Stay Informed</h3>
+<p class="text-emerald-100/70 mb-8 relative z-10">Receive weekly alerts on regional pathogen outbreaks and new treatment research directly from our botanists.</p>
+<div class="flex gap-2 relative z-10">
+<input class="flex-1 bg-white/10 border-white/20 rounded-full px-6 text-sm focus:ring-primary-container focus:border-primary-container placeholder:text-emerald-100/40" placeholder="email@example.com" type="email"/>
+<button class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-full font-bold text-sm">Subscribe</button>
+</div>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-8 flex items-center gap-6">
+<div class="h-24 w-24 bg-surface-container-lowest rounded-xl flex items-center justify-center botanical-shadow">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Request Research</h3>
+<p class="text-sm text-on-surface-variant mb-4">Can't find a specific pathogen? Submit a request for our intelligence team to investigate and document.</p>
+<button class="text-primary font-bold text-sm border-b-2 border-primary/20 pb-0.5 hover:border-primary transition-all">Submit Topic</button>
+</div>
+</div>
+</section>
+</main>
+</body></html>

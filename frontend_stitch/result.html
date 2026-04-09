@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlantWise AI - Diagnostic Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#b8f2f9",
+                        "on-tertiary-fixed-variant": "#2d676d",
+                        "error-container": "#fa746f",
+                        "surface": "#f8f9fa",
+                        "on-error": "#fff7f6",
+                        "outline": "#767c7e",
+                        "secondary-dim": "#345a51",
+                        "outline-variant": "#adb3b5",
+                        "error-dim": "#67040d",
+                        "surface-tint": "#2d6a4f",
+                        "on-background": "#2d3335",
+                        "tertiary-fixed-dim": "#aae4ea",
+                        "primary-container": "#b1f0ce",
+                        "secondary-container": "#c1ebdf",
+                        "primary-dim": "#1f5e44",
+                        "surface-dim": "#d5dbdd",
+                        "surface-container-high": "#e5e9eb",
+                        "surface-container-low": "#f1f4f5",
+                        "on-secondary": "#e3fff6",
+                        "background": "#f8f9fa",
+                        "secondary": "#40665d",
+                        "primary-fixed-dim": "#a3e2c0",
+                        "tertiary": "#2d676d",
+                        "on-secondary-fixed-variant": "#3c6359",
+                        "surface-container": "#ebeef0",
+                        "primary": "#2d6a4f",
+                        "tertiary-fixed": "#b8f2f9",
+                        "inverse-surface": "#0c0f10",
+                        "error": "#a83836",
+                        "on-primary-fixed-variant": "#29664c",
+                        "on-secondary-fixed": "#1f463d",
+                        "surface-bright": "#f8f9fa",
+                        "on-surface-variant": "#5a6062",
+                        "primary-fixed": "#b1f0ce",
+                        "inverse-primary": "#beffdc",
+                        "on-error-container": "#6e0a12",
+                        "tertiary-dim": "#1e5b61",
+                        "on-primary-container": "#1d5c42",
+                        "secondary-fixed-dim": "#b3ddd1",
+                        "secondary-fixed": "#c1ebdf",
+                        "on-tertiary": "#e8fdff",
+                        "on-tertiary-container": "#215d63",
+                        "on-tertiary-fixed": "#034b50",
+                        "on-primary-fixed": "#014931",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#2d3335",
+                        "surface-container-highest": "#dee3e6",
+                        "on-primary": "#e6ffee",
+                        "inverse-on-surface": "#9b9d9e",
+                        "on-secondary-container": "#325950",
+                        "surface-variant": "#dee3e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .botanical-shadow {
+            box-shadow: 0 20px 40px rgba(45, 106, 79, 0.06);
+        }
+        .leaf-trace {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 C60 30 90 40 90 70 C90 90 70 95 50 95 C30 95 10 90 10 70 C10 40 40 30 50 10' fill='none' stroke='%232d6a4f' stroke-opacity='0.03' stroke-width='0.5'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased leaf-trace">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 bottom-0 z-40 flex flex-col py-6 h-screen w-64 border-r-0 bg-emerald-900 dark:bg-emerald-950 shadow-xl dark:shadow-none font-manrope text-sm font-medium tracking-tight">
+<div class="text-2xl font-bold text-white tracking-tightest mb-8 px-4">PlantWise AI</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 bg-white/10 text-white rounded-xl px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+                Past Analyses
+            </a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">database</span>
+                Library
+            </a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto px-4 mb-6">
+<button class="w-full bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                New Analysis
+            </button>
+</div>
+<div class="border-t border-emerald-800/20 pt-6 space-y-1">
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+                Account
+            </a>
+</div>
+</aside>
+<!-- TopAppBar (Execution from JSON) -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-8 z-30 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl flat no shadows font-manrope text-sm font-semibold uppercase tracking-widest">
+<div class="hidden md:block text-emerald-900 dark:text-white font-black text-lg">Botanical Intelligence</div>
+<div class="flex items-center gap-6 ml-auto">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-xs w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search archives..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+</div>
+<div class="flex items-center gap-4 text-emerald-800 dark:text-emerald-100">
+<button class="hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-2 ring-2 ring-primary/20">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional botanist in a field setting with soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNsjj4Tb0NIWG6dligv4e4VUHTuUUe_zCzOaehUDaMmRtVvMayFjhb7k6v6I_QLem6L9nzyXqcWwS2RveCvcfI1ZuPqkOE_OKPUzMb1duWCssH-6aCj9XEJDfGlPvMqk_ixhmWs7C-GwtpKuC7F5iLkMV4lf8yBnY0GxbAE8d7XH-rAYYD8tFTArqTI_6q_3BVvEUABtqRNFx6rlDwPm8MK4R1jKvRziozK8CHG2L02Xvcgdjjmyno7kDK58DH21NyNY_e-tW2N4Q"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Result Header with AI Insight Chip -->
+<div class="flex items-end justify-between mb-8">
+<div>
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-2">Analysis Complete</h1>
+<p class="text-on-surface-variant font-medium">Diagnostic ID: BI-8922-X7</p>
+</div>
+<div class="flex items-center gap-3 bg-tertiary-container text-on-tertiary-container px-5 py-2.5 rounded-full font-semibold animate-pulse">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    AI Engine Verified
+                </div>
+</div>
+<!-- Bento Grid Layout for Results -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Result Card (Large) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest botanical-shadow rounded-xl p-8 overflow-hidden relative">
+<div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+<!-- Compressed Original Image Preview -->
+<div class="w-full md:w-1/3 shrink-0">
+<div class="relative rounded-lg overflow-hidden group">
+<img class="w-full aspect-square object-cover grayscale-[0.2]" data-alt="extreme close-up of an apple leaf with distinct brown necrotic spots characteristic of apple scab disease" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvAiP90f_7P7RlDNOCPv9SPYN_2T3A146EooKre3Y2sgkjfT4k5NYtka9yCc1B_C1FYedgewcvwOqfTgORYk903uqU8cSU0O54_5PPI4_EpLQ3c6NvsywaeZnWnufOOGA3FEbQ6pRPm2SgwQjH9hH7j7IaARO347hNt_2oCZXPZ83baGqXU93Mmqf19sE8NxJChTYySQKBJfE6wk2mGIs_TuSAUUQ7Z2EDcqulLUOCsR1rSfYmz0vEawD0h8JVZhs_JzU6lsYdPwQ"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded uppercase tracking-tighter">Uploaded Sample</div>
+</div>
+</div>
+<!-- Diagnosis Content -->
+<div class="flex-1 space-y-6">
+<div>
+<span class="text-primary font-bold text-xs uppercase tracking-widest mb-2 block">Primary Pathogen Detected</span>
+<h2 class="text-5xl font-black text-emerald-900 tracking-tightest">Apple Scab</h2>
+<p class="text-on-surface-variant mt-1 italic text-sm">Venturia inaequalis</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="text-sm font-semibold text-on-surface">Confidence Score</span>
+<span class="text-2xl font-black text-primary">98.4%</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98.4%"></div>
+</div>
+</div>
+<div class="bg-primary-container/30 rounded-lg p-5">
+<h4 class="text-on-primary-container font-bold text-sm mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">info</span>
+                                    AI Insight
+                                </h4>
+<p class="text-on-primary-container leading-relaxed text-sm">
+                                    Apple scab is a significant fungal disease caused by Venturia inaequalis. The current specimen shows advanced velvet-like olive spots on the leaf surface. If left untreated, this will lead to premature defoliation and compromised fruit quality.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -bottom-12 -right-12 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[240px]" style="font-variation-settings: 'wght' 100;">potted_plant</span>
+</div>
+</div>
+<!-- Immediate Actions Card -->
+<div class="col-span-12 lg:col-span-4 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-bold mb-4 leading-tight">Recommended Action Plan</h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span class="text-sm">Apply copper-based fungicide immediately.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span class="text-sm">Remove and destroy infected leaf litter.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span class="text-sm">Prune canopy to increase airflow.</span>
+</li>
+</ul>
+</div>
+<button class="mt-8 bg-white text-primary font-bold py-3 rounded-full hover:bg-primary-container transition-colors">
+                        View Detailed Protocol
+                    </button>
+</div>
+<!-- Secondary Data Grid (Asymmetrical) -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">thermostat</span>
+</div>
+<div>
+<p class="text-xs text-outline font-bold uppercase tracking-widest">Environment</p>
+<p class="text-lg font-bold">Humid/Moderate</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">High humidity levels detected in your region over the last 48 hours favored fungal germination.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+</div>
+<div>
+<p class="text-xs text-outline font-bold uppercase tracking-widest">Prevalence</p>
+<p class="text-lg font-bold">Common</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">This pathogen is endemic to your cultivar type. 4 nearby farms reported similar symptoms this week.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-white/40 backdrop-blur-md outline-variant/15 border-[1px] rounded-xl p-6 border-dashed">
+<div class="h-full flex flex-col items-center justify-center text-center gap-2">
+<span class="material-symbols-outlined text-primary/40 text-4xl">share</span>
+<p class="text-xs font-bold text-primary/60 uppercase">Export Full Report</p>
+<p class="text-[10px] text-outline">PDF, JSON, or Direct API</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed on details per protocol, but let's keep one for "New Scan" if needed, though SideNav has it. Let's strictly follow the "suppress on details" rule if we consider this a details screen.) -->
+</body></html>

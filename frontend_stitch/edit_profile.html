@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile - Botanical Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#aae4ea",
+                    "on-error": "#fff7f6",
+                    "secondary-dim": "#345a51",
+                    "on-tertiary": "#e8fdff",
+                    "inverse-on-surface": "#9b9d9e",
+                    "on-primary-container": "#1d5c42",
+                    "error": "#a83836",
+                    "primary-fixed-dim": "#a3e2c0",
+                    "on-error-container": "#6e0a12",
+                    "on-secondary": "#e3fff6",
+                    "primary-fixed": "#b1f0ce",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d5dbdd",
+                    "primary-dim": "#1f5e44",
+                    "secondary-fixed-dim": "#b3ddd1",
+                    "on-tertiary-fixed-variant": "#2d676d",
+                    "primary": "#2d6a4f",
+                    "on-primary-fixed": "#014931",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#c1ebdf",
+                    "on-surface-variant": "#5a6062",
+                    "surface-bright": "#f8f9fa",
+                    "outline": "#767c7e",
+                    "secondary": "#40665d",
+                    "surface-container-high": "#e5e9eb",
+                    "surface-container-highest": "#dee3e6",
+                    "on-background": "#2d3335",
+                    "inverse-primary": "#beffdc",
+                    "error-dim": "#67040d",
+                    "on-secondary-fixed-variant": "#3c6359",
+                    "tertiary-fixed": "#b8f2f9",
+                    "on-secondary-container": "#325950",
+                    "surface": "#f8f9fa",
+                    "error-container": "#fa746f",
+                    "on-tertiary-container": "#215d63",
+                    "on-surface": "#2d3335",
+                    "on-primary-fixed-variant": "#29664c",
+                    "on-tertiary-fixed": "#034b50",
+                    "tertiary-container": "#b8f2f9",
+                    "surface-container-low": "#f1f4f5",
+                    "on-secondary-fixed": "#1f463d",
+                    "surface-tint": "#2d6a4f",
+                    "primary-container": "#b1f0ce",
+                    "tertiary-dim": "#1e5b61",
+                    "surface-container": "#ebeef0",
+                    "secondary-container": "#c1ebdf",
+                    "surface-variant": "#dee3e6",
+                    "outline-variant": "#adb3b5",
+                    "on-primary": "#e6ffee",
+                    "tertiary": "#2d676d",
+                    "inverse-surface": "#0c0f10"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .botanical-shadow { box-shadow: 0 20px 40px rgba(45, 106, 79, 0.06); }
+        .leaf-trace {
+            background-image: radial-gradient(circle at 2px 2px, rgba(45, 106, 79, 0.02) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface leaf-trace">
+<!-- SideNavBar Component -->
+<nav class="fixed left-0 top-0 bottom-0 z-40 flex flex-col py-6 bg-emerald-900 dark:bg-emerald-950 h-screen w-64 border-r-0 shadow-xl dark:shadow-none font-manrope text-sm font-medium tracking-tight">
+<div class="text-2xl font-bold text-white tracking-tightest mb-8 px-4">PlantWise AI</div>
+<div class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Past Analyses</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Library</span>
+</a>
+<a class="flex items-center gap-3 bg-white/10 text-white rounded-xl px-4 py-3 mx-2 scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto space-y-1">
+<button class="w-[calc(100%-2rem)] mx-4 mb-6 bg-primary-container text-on-primary-container py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-primary-fixed transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Analysis
+            </button>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 text-emerald-100/60 hover:text-white px-4 py-3 mx-2 hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Account</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar Component -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-8 z-30 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl font-manrope text-sm font-semibold uppercase tracking-widest">
+<div class="hidden md:block text-emerald-900 dark:text-white font-black text-lg">Botanical Intelligence</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-xs focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search data..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-emerald-800 dark:text-emerald-100">
+<button class="hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male agronomist in a sunlit field with a soft blurred nature background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAspt-Byuj5-GriLkWHmlfqmQaVI-eJao2TXBBaMEQsmrkaEQcyFXc4Y-nUOWwNLFLG46So3CNP5B7SquIAmzkAPk4bPeoPQRvh3Dc5UCzTgaeUXtaeGDsDOzyNSm3aBC6NIijh6SQF7ocUVuOg8H1PNzvY6dgojxHVsQCKJ8XZplXFe6AbPwIKEQVTF52rEfQf_QmxaJwDsnTnVWraQ6SilIFysSScso0_wRjvOai4vUN2Xkm6nuCDbUCL0l8XXqeklBKLO5ChBdw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-64 pt-16 min-h-screen">
+<div class="max-w-5xl mx-auto px-12 py-12">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-xs font-label text-outline-variant mb-6">
+<a class="hover:text-primary" href="#">Settings</a>
+<span class="material-symbols-outlined text-[10px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">Edit Profile</span>
+</nav>
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight mb-2">Edit Profile</h1>
+<p class="text-on-surface-variant font-body">Manage your professional identity and agricultural focus areas.</p>
+</div>
+<!-- Profile Form Layout -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left Column: Profile Picture & Primary Info (Asymmetric focus) -->
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest botanical-shadow rounded-xl p-8 flex flex-col items-center text-center">
+<div class="relative group mb-6">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-container botanical-shadow">
+<img alt="Large User Profile" class="w-full h-full object-cover" data-alt="Detailed studio headshot of a smiling man with professional attire, clean lighting and emerald green background accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSmvKHa6O7jO5kmyu625429ABl2Zx9040Qa0VEGECRAcNXX3bFqASVFhM9cuoGmbh8Gn2JpaPdNVbjehbims5kLhCxFYTCLSBXw0adhhtwM8XY4Fd1GZWowydAKdyBjt0G2uuWy4ZX9X8H_O0wSbrQ0tNQR17TjdCRZud08GEp_Ve0IyReVqR468S3i8GfX7zWbtjRZlQUv7GoBwy05iDIAh0nYfFQqCS5TjLhGVZPZl2KZ54_VSJvxqF7VGxDXg2LwwiqEAXunxs"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full botanical-shadow hover:bg-primary-dim transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-1">Dr. Julian Vance</h3>
+<p class="text-xs font-label text-primary font-semibold uppercase tracking-wider mb-6">Expert Tier Member</p>
+<div class="w-full h-px bg-surface-container mb-6"></div>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Profile picture helps other specialists recognize you in the botanical intelligence network.</p>
+<button class="w-full py-2.5 px-4 rounded-full text-sm font-semibold bg-surface-container-highest text-on-surface hover:bg-surface-container-high transition-all">
+                            Change Photo
+                        </button>
+</div>
+<div class="bg-tertiary-container/30 rounded-xl p-6">
+<div class="flex items-center gap-3 mb-3 text-on-tertiary-container">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+<span class="font-bold text-sm">Verified Agronomist</span>
+</div>
+<p class="text-xs text-on-tertiary-container/80 leading-relaxed">Your professional credentials have been verified. Your analyses carry an "Expert Verified" badge.</p>
+</div>
+</div>
+<!-- Right Column: Form Fields -->
+<form class="col-span-12 lg:col-span-8 space-y-8">
+<div class="bg-surface-container-lowest botanical-shadow rounded-xl p-8 space-y-8">
+<!-- Section: Personal Information -->
+<div>
+<h2 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+                                Personal Details
+                            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant px-1">FULL NAME</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline-variant" type="text" value="Julian Vance"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant px-1">EMAIL ADDRESS</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-primary/20" type="email" value="j.vance@agrilabs.ai"/>
+</div>
+</div>
+</div>
+<!-- Section: Farm Location & Map -->
+<div>
+<h2 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="distance">distance</span>
+                                Farm Operations
+                            </h2>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant px-1">FARM LOCATION / PRIMARY HUB</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-3 pl-10 text-sm focus:ring-2 focus:ring-primary/20" type="text" value="Willamette Valley, Oregon"/>
+</div>
+</div>
+<!-- Map Integration Concept (No 1px borders) -->
+<div class="relative h-48 rounded-lg overflow-hidden botanical-shadow">
+<img alt="Farm Map" class="w-full h-full object-cover" data-alt="Minimalist satellite view of lush green agricultural patchwork fields and irrigation circles with soft natural colors" data-location="Oregon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdktl--I7NiU2v--_Gq8s9zkO5bM0o6V3v-4M66PeXYWG2l1ptZlnl1SSQ0RRqBN3r_XLlZe6HygerNoPbWEV3ohJQlseYfrWc3CxjMzM4R8rcIhzZZEn1zqxxlz6RWXuk-NqDDURjxYf9z2ot0S8UQlFslDNF9zeZ7o42voFDg7mSW5wr2597m8LPwIK73tE4KsjaDJKlW-nVUip4uVF6hbmrByPpjfbsUPNCph42UgauEQu-TI_uXhuXBrSQQkjXKaCwqUfD5Vk"/>
+<div class="absolute inset-0 bg-primary/10 pointer-events-none"></div>
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="gps_fixed">gps_fixed</span>
+                                        LOCATION PINNED
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Section: Professional Bio -->
+<div>
+<h2 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+                                Professional Bio
+                            </h2>
+<div class="space-y-2">
+<label class="text-xs font-label font-bold text-on-surface-variant px-1">SHORT BIO (MAX 250 CHARS)</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-4 text-sm focus:ring-2 focus:ring-primary/20 resize-none" rows="4">Specializing in Pacific Northwest viticulture and soil microbiome health. 15 years experience in precision agriculture and integrated pest management systems.</textarea>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-4 pb-12">
+<button class="px-8 py-3 rounded-full text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all" type="button">
+                            Discard Changes
+                        </button>
+<button class="px-10 py-3 rounded-full text-sm font-bold bg-primary text-on-primary botanical-shadow hover:bg-primary-dim active:scale-95 transition-all" type="submit">
+                            Save Profile Settings
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Profile/Settings as per mandates) -->
+<!-- Suppressed -->
+</body></html>

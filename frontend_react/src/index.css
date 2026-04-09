@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary: #2d6a4f;
+  --on-primary: #e6ffee;
+  --primary-container: #b1f0ce;
+  --on-primary-container: #1d5c42;
+  --surface: #f8f9fa;
+  --on-surface: #2d3335;
+  --surface-container-low: #f1f4f5;
+  --surface-container-lowest: #ffffff;
+  --surface-dim: #d5dbdd;
+  --outline-variant: rgba(173, 179, 181, 0.15);
+  --botanical-shadow: 0 20px 40px rgba(45, 106, 79, 0.06);
+  --radius-xl: 3rem;
+  --radius-lg: 2rem;
+  --radius-md: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.botanical-shadow {
+  box-shadow: var(--botanical-shadow);
+}
+
+.font-headline {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.anim-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.8; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+

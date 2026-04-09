@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - PlantWise AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#aae4ea",
+                    "on-error": "#fff7f6",
+                    "secondary-dim": "#345a51",
+                    "on-tertiary": "#e8fdff",
+                    "inverse-on-surface": "#9b9d9e",
+                    "on-primary-container": "#1d5c42",
+                    "error": "#a83836",
+                    "primary-fixed-dim": "#a3e2c0",
+                    "on-error-container": "#6e0a12",
+                    "on-secondary": "#e3fff6",
+                    "primary-fixed": "#b1f0ce",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d5dbdd",
+                    "primary-dim": "#1f5e44",
+                    "secondary-fixed-dim": "#b3ddd1",
+                    "on-tertiary-fixed-variant": "#2d676d",
+                    "primary": "#2d6a4f",
+                    "on-primary-fixed": "#014931",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#c1ebdf",
+                    "on-surface-variant": "#5a6062",
+                    "surface-bright": "#f8f9fa",
+                    "outline": "#767c7e",
+                    "secondary": "#40665d",
+                    "surface-container-high": "#e5e9eb",
+                    "surface-container-highest": "#dee3e6",
+                    "on-background": "#2d3335",
+                    "inverse-primary": "#beffdc",
+                    "error-dim": "#67040d",
+                    "on-secondary-fixed-variant": "#3c6359",
+                    "tertiary-fixed": "#b8f2f9",
+                    "on-secondary-container": "#325950",
+                    "surface": "#f8f9fa",
+                    "error-container": "#fa746f",
+                    "on-tertiary-container": "#215d63",
+                    "on-surface": "#2d3335",
+                    "on-primary-fixed-variant": "#29664c",
+                    "on-tertiary-fixed": "#034b50",
+                    "tertiary-container": "#b8f2f9",
+                    "surface-container-low": "#f1f4f5",
+                    "on-secondary-fixed": "#1f463d",
+                    "surface-tint": "#2d6a4f",
+                    "primary-container": "#b1f0ce",
+                    "tertiary-dim": "#1e5b61",
+                    "surface-container": "#ebeef0",
+                    "secondary-container": "#c1ebdf",
+                    "surface-variant": "#dee3e6",
+                    "outline-variant": "#adb3b5",
+                    "on-primary": "#e6ffee",
+                    "tertiary": "#2d676d",
+                    "inverse-surface": "#0c0f10"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #2d3335;
+        }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .botanical-shadow {
+            box-shadow: 0 20px 40px rgba(45, 106, 79, 0.06);
+        }
+        .leaf-trace-grid {
+            background-image: radial-gradient(circle at 2px 2px, rgba(45, 106, 79, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex items-center justify-center p-6 relative overflow-hidden leaf-trace-grid">
+<!-- Decorative Background Elements -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-container opacity-20 blur-3xl rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-tertiary-container opacity-20 blur-3xl rounded-full"></div>
+<main class="w-full max-w-[480px] z-10">
+<!-- Brand Identity -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-xl mb-6 botanical-shadow">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="potted_plant">potted_plant</span>
+</div>
+<h1 class="font-headline text-3xl font-extrabold text-on-background tracking-tightest mb-2">PlantWise AI</h1>
+<p class="text-on-surface-variant font-medium tracking-tight">Access your botanical intelligence</p>
+</div>
+<!-- Login Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 botanical-shadow">
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface tracking-wide" for="email">Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors" data-icon="mail">mail</span>
+</div>
+<input class="w-full pl-12 pr-4 py-3.5 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline-variant" id="email" placeholder="name@nursery.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block text-sm font-semibold text-on-surface tracking-wide" for="password">Password</label>
+<a class="text-xs font-bold text-primary hover:text-primary-dim transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline-variant group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+</div>
+<input class="w-full pl-12 pr-12 py-3.5 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all text-on-surface placeholder:text-outline-variant" id="password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant hover:text-on-surface" data-icon="visibility">visibility</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary hover:bg-primary-dim text-on-primary font-bold py-4 rounded-full transition-all flex items-center justify-center gap-2 group botanical-shadow" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-surface-container-high"></div>
+<span class="flex-shrink mx-4 text-xs font-bold text-outline-variant uppercase tracking-widest">or continue with</span>
+<div class="flex-grow border-t border-surface-container-high"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-full transition-colors text-on-surface font-semibold text-sm" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="google">google</span>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-full transition-colors text-on-surface font-semibold text-sm" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="brand_awareness">brand_awareness</span>
+                        Apple
+                    </button>
+</div>
+</form>
+<!-- Footer Links -->
+<div class="mt-10 text-center">
+<p class="text-on-surface-variant font-medium text-sm">
+                    Don't have an account? 
+                    <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Create an account</a>
+</p>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="mt-12 flex flex-col items-center gap-6">
+<div class="flex items-center gap-6 opacity-40">
+<div class="w-24 h-8 bg-surface-container-highest rounded flex items-center justify-center px-2">
+<span class="text-[10px] font-bold text-outline-variant tracking-widest uppercase">Verified Expert</span>
+</div>
+<div class="w-24 h-8 bg-surface-container-highest rounded flex items-center justify-center px-2">
+<span class="text-[10px] font-bold text-outline-variant tracking-widest uppercase">Secured AI</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-outline-variant">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span class="text-xs font-medium uppercase tracking-widest">Enterprise Grade Security</span>
+</div>
+</div>
+</main>
+<!-- Side Image / Branding Element (Desktop only, asymmetrically placed) -->
+<div class="hidden xl:block absolute right-20 top-1/2 -translate-y-1/2 w-[400px]">
+<div class="relative">
+<img alt="Close-up of a Monstera Deliciosa leaf with intricate patterns and soft morning light" class="rounded-xl botanical-shadow grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700" data-alt="Macro photography of a vibrant green monstera leaf with intricate natural patterns and soft morning light filtering through" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACW0WnKhCmtqX1dWzeWUrVCplpqP3FiPdFGXv6HiLW5OLLYMo2_XLmQBgTBcDTmb6YIMtaVEo935KU_yKFv6TdpQOvIBdtpCHn8Dh7R0W66baGZSyMChssH673M_wZXoBWx3u1yAg7sVuIZWXoFtusIJ11eCSCNxkhTZ-l-pdp22V-b3mo6TyFs4neFIbfzLXM3tB7Fv3HFa_iLq08L2wedrsYlKAPGM54m-akIaEj8-X7pWyicllBZTTDr2lgEz8FfEf1D2sVVIg"/>
+<div class="absolute -bottom-8 -left-8 p-6 bg-primary-container rounded-lg botanical-shadow max-w-[280px]">
+<h3 class="font-headline text-on-primary-container font-bold mb-2">Did you know?</h3>
+<p class="text-on-primary-container/80 text-sm italic">"Plants can communicate with each other through a complex network of underground fungi."</p>
+</div>
+</div>
+</div>
+</body></html>
