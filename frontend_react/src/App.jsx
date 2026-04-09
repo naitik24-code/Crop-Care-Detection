@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
-import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User } from "lucide-react";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
+import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User, LogOut } from "lucide-react";
 import { healthCheck } from "./api";
 import Home from "./pages/Home";
 import History from "./pages/History";
@@ -8,8 +8,10 @@ import Library from "./pages/Library";
 import Settings from "./pages/Settings";
 import Help from "./pages/Help";
 import Account from "./pages/Account";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
-function AppContent() {
+function AppContent({ onLogout }) {
   const [apiOnline, setApiOnline] = useState(null);
   const location = useLocation();
 
@@ -66,7 +68,7 @@ function AppContent() {
             );
           })}
         </nav>
-        <div className="px-4 mt-auto">
+        <div className="px-4 mt-auto space-y-4">
           <Link
             to="/"
             className="w-full font-black py-4 rounded-2xl flex items-center justify-center gap-2 bg-emerald-500 text-emerald-950 hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-emerald-900/40 group no-underline"
@@ -74,6 +76,13 @@ function AppContent() {
             <PlusCircle className="w-5 h-5 stroke-[3px]" />
             New Analysis
           </Link>
+          <button
+            onClick={onLogout}
+            className="w-full py-3 rounded-xl flex items-center justify-center gap-2 text-emerald-100/30 hover:text-red-400 hover:bg-red-400/5 transition-all text-[10px] font-black uppercase tracking-widest"
+          >
+            <LogOut className="w-4 h-4" />
+            Sign Out
+          </button>
         </div>
       </aside>
 
@@ -105,6 +114,7 @@ function AppContent() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/help" element={<Help />} />
           <Route path="/account" element={<Account />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </div>
@@ -119,11 +129,34 @@ function ShieldIcon({ className }) {
   );
 }
 
-
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem("plantwise_auth") === "true";
+  });
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem("plantwise_auth", "true");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("plantwise_auth");
+  };
+
   return (
     <Router>
-      <AppContent />
+      <Routes>
+        {!isLoggedIn ? (
+          <>
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </>
+        ) : (
+          <Route path="*" element={<AppContent onLogout={handleLogout} />} />
+        )}
+      </Routes>
     </Router>
   );
 }
