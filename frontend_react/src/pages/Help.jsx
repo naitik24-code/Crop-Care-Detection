@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
-import { Search, HelpCircle, MessageSquare, Book, LifeBuoy, ChevronRight, Zap } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, HelpCircle, MessageSquare, Book, LifeBuoy, ChevronRight, Zap, ChevronDown } from "lucide-react";
 
 export default function Help() {
+  const [openFaq, setOpenFaq] = useState(0);
+  const [search, setSearch] = useState("");
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "circOut", staggerChildren: 0.1 } }
@@ -35,8 +38,10 @@ export default function Help() {
           <div className="relative group mx-auto max-w-2xl">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
             <input 
-              type="text" 
+              type="text"
               placeholder="Search diagnostic protocols, API docs, or system FAQs..."
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
               className="w-full pl-16 pr-8 py-6 rounded-[2.5rem] bg-white border border-black/5 botanical-shadow outline-none focus:ring-8 focus:ring-emerald-500/5 transition-all font-bold text-emerald-950 text-lg placeholder:text-slate-300"
             />
             <div className="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 font-black text-[10px] uppercase tracking-widest border border-emerald-100">
@@ -54,19 +59,20 @@ export default function Help() {
             </motion.div>
             
             <div className="space-y-4">
-               {faqs.map((faq, i) => (
+               {faqs.filter((faq) => `${faq.q} ${faq.a}`.toLowerCase().includes(search.toLowerCase())).map((faq, i) => (
                  <motion.div 
                    key={i}
                    variants={itemVariants}
                    whileHover={{ x: 4 }}
+                   onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
                    className="bg-white rounded-[2rem] p-8 botanical-shadow border border-black/5 group cursor-pointer transition-all hover:bg-emerald-50/20"
                  >
                    <div className="flex justify-between items-center gap-6">
-                      <div className="space-y-3">
+                      <div>
                          <div className="text-lg font-black text-emerald-950 leading-tight group-hover:text-emerald-700 transition-colors">{faq.q}</div>
-                         <div className="text-sm text-slate-500 font-medium leading-relaxed max-w-2xl">{faq.a}</div>
+                         <AnimatePresence initial={false}>{openFaq === i && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden"><div className="pt-3 text-sm text-slate-500 font-medium leading-relaxed max-w-2xl">{faq.a}</div></motion.div>}</AnimatePresence>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-slate-200 group-hover:text-emerald-500 transition-all shrink-0" />
+                      <ChevronDown className={`w-5 h-5 text-slate-300 group-hover:text-emerald-500 transition-all shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
                    </div>
                  </motion.div>
                ))}

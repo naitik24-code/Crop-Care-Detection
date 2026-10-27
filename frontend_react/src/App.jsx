@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
-import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User, LogOut } from "lucide-react";
+import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User, LogOut, Menu, X } from "lucide-react";
 import { healthCheck } from "./api";
 import Home from "./pages/Home";
 import History from "./pages/History";
@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 
 function AppContent({ onLogout }) {
   const [apiOnline, setApiOnline] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,14 +40,14 @@ function AppContent({ onLogout }) {
   ];
 
   return (
-    <div className="min-h-screen flex bg-slate-50 font-sans selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="app-shell min-h-screen flex font-sans selection:bg-emerald-100 selection:text-emerald-900">
       {/* ─── Sidebar ─── */}
-      <aside className="fixed left-0 top-0 bottom-0 z-40 flex flex-col py-8 h-screen w-64 shadow-2xl shadow-emerald-900/10 bg-emerald-950 border-r border-white/5">
-        <div className="text-2xl font-black text-white tracking-tighter mb-12 px-8 flex items-center gap-2 font-headline">
-          <div className="w-8 h-8 rounded-xl bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-            <ShieldIcon className="w-5 h-5 text-emerald-950" />
-          </div>
-          PlantWise
+      {mobileOpen && <button aria-label="Close navigation" onClick={() => setMobileOpen(false)} className="fixed inset-0 z-30 bg-emerald-950/45 md:hidden" />}
+      <aside className={`fixed left-0 top-0 bottom-0 z-40 flex flex-col py-8 h-screen w-72 shadow-2xl shadow-emerald-950/20 bg-emerald-950 border-r border-white/5 transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
+        <div className="text-2xl font-black text-white tracking-tighter mb-12 px-8 flex items-center gap-3 font-headline">
+          <img src="/logo.svg" alt="CropCare logo" className="w-10 h-10 rounded-2xl shadow-lg shadow-emerald-500/30" />
+          <span>Crop<span className="text-emerald-400">Care</span></span>
+          <button onClick={() => setMobileOpen(false)} className="ml-auto md:hidden p-2 text-white/60"><X className="w-5 h-5" /></button>
         </div>
         <nav className="flex-1 px-4 space-y-1">
           {navigation.map((item) => {
@@ -56,6 +57,7 @@ function AppContent({ onLogout }) {
               <Link
                 key={item.label}
                 to={item.path}
+                onClick={() => setMobileOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group no-underline ${
                   active 
                     ? "bg-emerald-500/10 text-emerald-400 font-bold" 
@@ -87,16 +89,17 @@ function AppContent({ onLogout }) {
       </aside>
 
       {/* ─── Top AppBar ─── */}
-      <header className="fixed top-0 right-0 z-30 h-20 flex justify-between items-center px-10 left-64 glass-panel border-b border-black/5">
-        <div className="font-black text-xl text-emerald-900 tracking-tighter font-headline">
-          Botanical Dashboard
+      <header className="fixed top-0 right-0 z-30 h-20 flex justify-between items-center px-5 md:px-10 left-0 md:left-72 glass-panel border-b border-emerald-900/5">
+        <div className="flex items-center gap-3 font-black text-xl text-emerald-950 tracking-tighter font-headline">
+          <button aria-label="Open navigation" onClick={() => setMobileOpen(true)} className="p-2 -ml-2 md:hidden text-emerald-900"><Menu className="w-5 h-5" /></button>
+          <span className="hidden sm:block">Crop Health Console</span><span className="sm:hidden">CropCare</span>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 bg-emerald-900/5 px-4 py-2 rounded-full border border-emerald-900/10">
             <div className={`w-2 h-2 rounded-full ${statusColor} ${apiOnline ? "animate-pulse" : ""}`} />
             <span className="text-[10px] font-black uppercase tracking-widest text-emerald-900/60">{statusLabel}</span>
           </div>
-          <button className="p-2.5 rounded-xl text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
+          <button aria-label="Notifications" className="hidden sm:block p-2.5 rounded-xl text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all">
             <Bell className="w-5 h-5" />
           </button>
           <div className="w-10 h-10 rounded-2xl bg-emerald-900 flex items-center justify-center text-white text-sm font-black border border-emerald-800 shadow-xl shadow-emerald-900/20">
@@ -106,7 +109,7 @@ function AppContent({ onLogout }) {
       </header>
 
       {/* ─── Main Content ─── */}
-      <main className="flex-1 ml-64 pt-28 min-h-screen">
+      <main className="flex-1 ml-0 md:ml-72 pt-28 min-h-screen">
         <Routes>
           <Route path="/" element={<Home apiOnline={apiOnline} statusColor={statusColor} />} />
           <Route path="/history" element={<History />} />
@@ -118,14 +121,6 @@ function AppContent({ onLogout }) {
         </Routes>
       </main>
     </div>
-  );
-}
-
-function ShieldIcon({ className }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-    </svg>
   );
 }
 

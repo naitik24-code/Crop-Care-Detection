@@ -1,5 +1,11 @@
 import os
 import sys
+
+# Workaround for Intel OpenMP multiple runtime conflict on Windows
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+
 import cv2
 import numpy as np
 import joblib
@@ -207,4 +213,4 @@ async def predict_disease(file: UploadFile = File(...)):
 if __name__ == "__main__":
     # Spins up standard HTTP backend engine via uvicorn if ran as script
     print("[INFO] Igniting standard FastAPI production engine...")
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run("app:app", host="0.0.0.0", port=8001, reload=False)

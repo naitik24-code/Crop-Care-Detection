@@ -14,7 +14,7 @@ echo.
 
 echo [1/2] Launching FastAPI Backend Engine...
 echo       (Using Anaconda Python with Hybrid ML Pipeline)
-start "Crop AI Backend" cmd /k "echo Starting Backend... && cd backend && %BACKEND_PYTHON% app.py"
+start "Crop AI Backend" cmd /k "echo Starting Backend... && cd backend && set KMP_DUPLICATE_LIB_OK=TRUE && %BACKEND_PYTHON% app.py"
 
 echo [2/2] Launching React Frontend (Vite)...
 echo.
@@ -24,7 +24,7 @@ echo.
 echo ==========================================================
 echo  SYSTEM BOOT INITIATED
 echo ==========================================================
-echo  Backend API : http://127.0.0.1:8000
+echo  Backend API : http://127.0.0.1:8001
 echo  Frontend UI  : http://localhost:5173
 echo.
 echo  Note: Please ensure the API is "Online" in the 

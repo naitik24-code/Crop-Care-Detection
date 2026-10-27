@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, ShieldCheck, Globe } from "lucide-react";
+import { Mail, Lock, ArrowRight, Globe } from "lucide-react";
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -17,14 +17,9 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-emerald-950">
-      {/* Background with Generated Asset */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/C:/Users/NAITIK PATHAK/.gemini/antigravity/brain/f5fda5ff-1253-4f2c-8267-67cc692d6750/botanical_auth_background_1775711690391.png" 
-          alt="Botanical Background"
-          className="w-full h-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/80 via-transparent to-emerald-950/80" />
+        <div className="w-full h-full opacity-40" style={{ backgroundImage: "radial-gradient(circle at 15% 20%, #34d399 0, transparent 18%), radial-gradient(circle at 85% 80%, #0f766e 0, transparent 23%)" }} />
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/80 via-emerald-950/40 to-emerald-950/90" />
       </div>
 
       {/* Login Card */}
@@ -35,9 +30,8 @@ export default function Login({ onLogin }) {
         className="relative z-10 w-full max-w-md px-10 py-12 rounded-[3.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl"
       >
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500 mb-6 shadow-xl shadow-emerald-500/30">
-            <ShieldCheck className="w-8 h-8 text-emerald-950" />
-          </div>
+          <img src="/logo.svg" alt="CropCare logo" className="inline-flex w-16 h-16 rounded-2xl mb-6 shadow-xl shadow-emerald-500/30" />
+          <div className="text-emerald-400 text-xs font-black tracking-[.3em] uppercase mb-3">CropCare Diagnostics</div>
           <h1 className="text-4xl font-black text-white tracking-tighter font-headline mb-2">Welcome Back</h1>
           <p className="text-emerald-100/40 text-sm font-medium">Access your botanical intelligence dashboard.</p>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Cpu, Activity, Info } from "lucide-react";
+import { ShieldCheck, Cpu, Activity, Info, ScanLine, Leaf, Gauge, ArrowUpRight } from "lucide-react";
 import UploadCard from "../components/UploadCard";
 import ResultCard from "../components/ResultCard";
 import { predictDisease } from "../api";
@@ -53,7 +53,7 @@ export default function Home({ apiOnline, statusColor }) {
     } catch (err) {
       console.error("[HOME ERROR]", err);
       const msg = err.response?.data?.detail || err.message || "Unknown error";
-      setError(`Backend Error: ${msg}\n\nEnsure 'python backend/app.py' is running on port 8000.`);
+      setError(`Backend Error: ${msg}\n\nEnsure 'python backend/app.py' is running on port 8001.`);
     } finally {
       setIsLoading(false);
     }
@@ -98,14 +98,20 @@ export default function Home({ apiOnline, statusColor }) {
       {/* Dashboard View */}
       {view === "dashboard" ? (
         <div className="max-w-5xl mx-auto flex flex-col items-center">
-          <motion.div variants={itemVariants} className="text-center mb-16 max-w-3xl">
-            <h1 className="text-7xl font-black mb-6 tracking-tighter leading-[0.9] text-emerald-950 font-headline">
-              Crop Intelligence
+          <motion.div variants={itemVariants} className="text-center mb-12 max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/75 border border-emerald-900/10 text-[10px] font-black uppercase tracking-[.22em] text-emerald-700 shadow-sm"><span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live local diagnostics</div>
+            <h1 className="text-7xl font-black mb-6 tracking-tighter leading-[0.9] font-headline shimmer-text">
+              Crop Intelligence,
+              <span className="block text-emerald-950">made actionable.</span>
             </h1>
             <p className="text-xl text-slate-500 leading-relaxed font-medium">
               Elite botanical diagnostics powered by a Hybrid AI Pipeline. Our neural networks analyze cellular patterns to identify plant pathologies with 98% accuracy.
               <span className="block mt-4 text-xs text-emerald-600 font-black uppercase tracking-[0.2em]">(GLCM + HOG + MOBILENETV2)</span>
             </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="grid grid-cols-3 gap-3 w-full max-w-3xl mb-10">
+            {[{ icon: ScanLine, value: "2,852", label: "signals read" }, { icon: Gauge, value: "< 1 sec", label: "scan response" }, { icon: Leaf, value: "4 crops", label: "in library" }].map(({ icon: Icon, value, label }) => <div key={label} className="interactive-card rounded-2xl bg-white/70 border border-white p-4 text-left"><Icon className="w-4 h-4 text-emerald-600 mb-3"/><div className="font-black text-emerald-950 text-lg leading-none">{value}</div><div className="text-[9px] uppercase tracking-widest font-black text-slate-400 mt-1">{label}</div></div>)}
           </motion.div>
 
           <motion.div variants={itemVariants} className="w-full max-w-4xl flex justify-center mb-20">
@@ -117,7 +123,7 @@ export default function Home({ apiOnline, statusColor }) {
             <motion.div 
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="md:col-span-8 rounded-[3rem] p-12 bg-white border border-black/5 botanical-shadow relative overflow-hidden group"
+              className="interactive-card md:col-span-8 rounded-[3rem] p-12 bg-white border border-black/5 botanical-shadow relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 p-12 opacity-[0.02] group-hover:scale-110 transition-transform duration-1000">
                 <ShieldCheck className="w-80 h-80 text-emerald-900" />
@@ -147,7 +153,7 @@ export default function Home({ apiOnline, statusColor }) {
             <motion.div 
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="md:col-span-4 rounded-[3rem] p-12 bg-emerald-950 text-white shadow-2xl shadow-emerald-950/20 relative overflow-hidden"
+              className="interactive-card md:col-span-4 rounded-[3rem] p-12 bg-emerald-950 text-white shadow-2xl shadow-emerald-950/20 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent" />
               <div className="relative z-10 h-full flex flex-col">
@@ -169,8 +175,8 @@ export default function Home({ apiOnline, statusColor }) {
                     </div>
                   ))}
                 </div>
-                <button className="mt-12 w-full py-5 rounded-2xl bg-white/10 border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-emerald-950 hover:border-emerald-500 transition-all active:scale-95">
-                  Run Diagnostic
+                <button onClick={() => document.getElementById("file-input")?.click()} className="mt-12 w-full py-5 rounded-2xl bg-white/10 border border-white/10 text-[10px] font-black uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-emerald-950 hover:border-emerald-500 transition-all active:scale-95 flex items-center justify-center gap-2">
+                  Run Diagnostic <ArrowUpRight className="w-4 h-4" />
                 </button>
               </div>
             </motion.div>

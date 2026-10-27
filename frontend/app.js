@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // 4. Send to Python FastAPI Backend 
-            // (Assumes app.py is running on port 8000)
-            const response = await fetch("http://localhost:8000/predict", {
+            // (Assumes app.py is running on port 8001)
+            const response = await fetch("http://localhost:8001/predict", {
                 method: "POST",
                 body: formData
             });

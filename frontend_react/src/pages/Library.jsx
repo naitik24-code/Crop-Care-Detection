@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, BookOpen, ExternalLink } from "lucide-react";
 
@@ -33,6 +34,8 @@ const DISEASES = [
 ];
 
 export default function Library() {
+  const [query, setQuery] = useState("");
+  const filteredDiseases = DISEASES.filter((d) => `${d.name} ${d.pathogen} ${d.symptoms}`.toLowerCase().includes(query.toLowerCase()));
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -61,13 +64,15 @@ export default function Library() {
             <input 
               type="text" 
               placeholder="Search database..."
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
               className="pl-12 pr-6 py-4 rounded-2xl bg-white border border-slate-200 outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all text-sm w-full md:w-80 font-bold shadow-sm"
             />
           </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-20">
-          {DISEASES.map((d) => (
+          {filteredDiseases.map((d) => (
             <motion.div 
               key={d.name} 
               variants={itemVariants}
@@ -103,6 +108,9 @@ export default function Library() {
               </div>
             </motion.div>
           ))}
+          {filteredDiseases.length === 0 && (
+            <div className="md:col-span-2 rounded-[2rem] border border-dashed border-emerald-900/20 bg-white/60 p-14 text-center text-slate-500 font-bold">No crop conditions match “{query}”. Try a crop, pathogen, or symptom.</div>
+          )}
         </div>
       </div>
     </motion.div>

@@ -49,7 +49,7 @@ pip install -r requirements.txt
 # Ignite the ASGI Production Server
 python backend/app.py
 ```
-*The endpoint will be exclusively available at `http://localhost:8000/predict`*
+*The endpoint will be exclusively available at `http://localhost:8001/predict`*
 
 ### 2. Frontend Launch
 Because CropCare utilizes an absurdly optimized Vanilla DOM, there is **zero installation required**. 

@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Settings as SettingsIcon, Bell, Shield, Cpu, Save, User, Globe } from "lucide-react";
 
 export default function Settings() {
+  const [activeSection, setActiveSection] = useState("Profile");
+  const [saved, setSaved] = useState(false);
+  const [toggles, setToggles] = useState([true, true, false]);
   const containerVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "circOut", staggerChildren: 0.1 } }
@@ -42,8 +46,9 @@ export default function Settings() {
               <motion.button
                 key={link.label}
                 variants={itemVariants}
+                onClick={() => setActiveSection(link.label)}
                 className={`w-full flex items-center justify-between p-6 rounded-[2rem] transition-all group ${
-                  link.active 
+                  activeSection === link.label
                     ? "bg-emerald-950 text-white shadow-2xl shadow-emerald-900/40" 
                     : "bg-white text-slate-400 botanical-shadow border border-black/5 hover:bg-slate-50"
                 }`}
@@ -52,7 +57,7 @@ export default function Settings() {
                   <link.icon className={`w-5 h-5 ${link.active ? "text-emerald-400" : "group-hover:text-emerald-600"}`} />
                   <span className="text-xs font-black uppercase tracking-widest">{link.label}</span>
                 </div>
-                {link.active && <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
+                {activeSection === link.label && <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />}
               </motion.button>
             ))}
           </div>
@@ -109,14 +114,14 @@ export default function Settings() {
                   { label: "Deep Feature Extraction (VGG19/MobileNet)", desc: "Enable multi-model synthesis for higher accuracy analytics.", active: true },
                   { label: "Real-time Histogram Neutralization", desc: "Automatically balance exposure levels in high-glare field conditions.", active: true },
                   { label: "Edge Computing Buffer", desc: "Store temporary spectral data locally to allow offline diagnostics.", active: false },
-                ].map((toggle) => (
+                ].map((toggle, index) => (
                   <div key={toggle.label} className="flex items-center justify-between p-6 rounded-3xl bg-slate-50 border border-black/[0.02]">
                     <div className="max-w-md">
                       <div className="text-xs font-black text-emerald-950 mb-1">{toggle.label}</div>
                       <div className="text-[10px] text-slate-400 font-bold leading-relaxed">{toggle.desc}</div>
                     </div>
-                    <button className={`w-12 h-6 rounded-full transition-all relative ${toggle.active ? "bg-emerald-500 shadow-lg shadow-emerald-500/20" : "bg-slate-200"}`}>
-                      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${toggle.active ? "left-7" : "left-1"}`} />
+                    <button aria-label={`Toggle ${toggle.label}`} onClick={() => setToggles((items) => items.map((value, itemIndex) => itemIndex === index ? !value : value))} className={`w-12 h-6 rounded-full transition-all relative ${toggles[index] ? "bg-emerald-500 shadow-lg shadow-emerald-500/20" : "bg-slate-200"}`}>
+                      <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${toggles[index] ? "left-7" : "left-1"}`} />
                     </button>
                   </div>
                 ))}
@@ -124,9 +129,9 @@ export default function Settings() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex justify-end pt-4">
-              <button className="flex items-center gap-3 px-10 py-5 rounded-2xl bg-emerald-950 text-white font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/40 hover:bg-emerald-800 transition-all active:scale-95">
+              <button onClick={() => { setSaved(true); window.setTimeout(() => setSaved(false), 2200); }} className="flex items-center gap-3 px-10 py-5 rounded-2xl bg-emerald-950 text-white font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/40 hover:bg-emerald-800 transition-all active:scale-95">
                 <Save className="w-4 h-4 text-emerald-400" />
-                Synchronize Changes
+                {saved ? "Preferences Saved" : "Synchronize Changes"}
               </button>
             </motion.div>
           </div>
