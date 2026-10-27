@@ -16,10 +16,13 @@ export default function Login({ onLogin }) {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-emerald-950">
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full opacity-40" style={{ backgroundImage: "radial-gradient(circle at 15% 20%, #34d399 0, transparent 18%), radial-gradient(circle at 85% 80%, #0f766e 0, transparent 23%)" }} />
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/80 via-emerald-950/40 to-emerald-950/90" />
+    <div className="auth-shell"><div className="auth-grid">
+      <div className="auth-copy hidden md:block">
+        <div className="flex items-center gap-3 mb-14"><img src="/logo.svg" alt="CropCare" className="w-12 h-12 rounded-2xl" /><span className="text-2xl font-black tracking-tight">Crop<span className="text-emerald-400">Care</span></span></div>
+        <div className="text-emerald-300 text-xs uppercase tracking-[.35em] font-black mb-5">Field intelligence, simplified</div>
+        <h1 className="font-headline font-black mb-8">See what your crops are telling you.</h1>
+        <p className="text-emerald-50/60 text-lg leading-relaxed max-w-lg">Upload a leaf. Get a clear, explainable health signal from your local hybrid vision engine.</p>
+        <div className="flex gap-3 mt-12"><span className="px-4 py-3 rounded-2xl bg-white/10 text-xs font-bold">98% target accuracy</span><span className="px-4 py-3 rounded-2xl bg-white/10 text-xs font-bold">Private by design</span></div>
       </div>
 
       {/* Login Card */}
@@ -27,10 +30,10 @@ export default function Login({ onLogin }) {
         initial={{ opacity: 0, scale: 0.9, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "circOut" }}
-        className="relative z-10 w-full max-w-md px-10 py-12 rounded-[3.5rem] bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl"
+        className="auth-card w-full max-w-md px-8 sm:px-10 py-10 rounded-[2.5rem]"
       >
         <div className="text-center mb-10">
-          <img src="/logo.svg" alt="CropCare logo" className="inline-flex w-16 h-16 rounded-2xl mb-6 shadow-xl shadow-emerald-500/30" />
+          <img src="/logo.svg" alt="CropCare logo" className="inline-flex w-16 h-16 rounded-2xl mb-5 shadow-xl shadow-emerald-500/30" />
           <div className="text-emerald-400 text-xs font-black tracking-[.3em] uppercase mb-3">CropCare Diagnostics</div>
           <h1 className="text-4xl font-black text-white tracking-tighter font-headline mb-2">Welcome Back</h1>
           <p className="text-emerald-100/40 text-sm font-medium">Access your botanical intelligence dashboard.</p>
@@ -45,7 +48,7 @@ export default function Login({ onLogin }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address" 
-              className="w-full pl-16 pr-8 py-5 rounded-2xl bg-white/5 border border-white/5 text-white outline-none focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all placeholder:text-emerald-100/20 font-medium"
+              className="auth-input w-full pl-16 pr-8 py-5 rounded-2xl text-white outline-none focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all placeholder:text-emerald-100/40 font-medium"
             />
           </div>
 
@@ -57,7 +60,7 @@ export default function Login({ onLogin }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password" 
-              className="w-full pl-16 pr-8 py-5 rounded-2xl bg-white/5 border border-white/5 text-white outline-none focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all placeholder:text-emerald-100/20 font-medium"
+              className="auth-input w-full pl-16 pr-8 py-5 rounded-2xl text-white outline-none focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all placeholder:text-emerald-100/40 font-medium"
             />
           </div>
 
@@ -99,6 +102,6 @@ export default function Login({ onLogin }) {
           New to the platform? <Link to="/signup" className="text-emerald-500 hover:text-white transition-colors">Register Identity</Link>
         </p>
       </motion.div>
-    </div>
+    </div></div>
   );
 }

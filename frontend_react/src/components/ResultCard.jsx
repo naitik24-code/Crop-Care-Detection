@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function ResultCard({ result, filename, imageUrl, onReset }) {
+  const [diagnosticId] = useState(() => `BI-${Math.floor(Math.random() * 9000) + 1000}-X7`);
   const { prediction = "", confidence = 0, description = "", solution = "" } = result;
 
   const formattedPred = prediction.replace(/___/g, " - ").replace(/_/g, " ");
@@ -19,7 +22,7 @@ export default function ResultCard({ result, filename, imageUrl, onReset }) {
           </h1>
           <div className="flex items-center gap-2 text-slate-400 font-bold text-xs uppercase tracking-widest">
             <span className="material-symbols-outlined text-sm">fingerprint</span>
-            Diagnostic ID: BI-{Math.floor(Math.random() * 9000) + 1000}-X7 • {filename}
+            Diagnostic ID: {diagnosticId} • {filename}
           </div>
         </div>
         <div className="flex items-center gap-3 px-6 py-3 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-emerald-900/5 bg-emerald-50 text-emerald-700 border border-emerald-100">
