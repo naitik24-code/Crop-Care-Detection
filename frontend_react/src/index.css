@@ -16,6 +16,13 @@
   --radius-xl: 3rem;
   --radius-lg: 2rem;
   --radius-md: 1rem;
+  --cc-ink: #17352c;
+  --cc-moss: #064e3b;
+  --cc-leaf: #10b981;
+  --cc-mint: #dff7ea;
+  --cc-paper: #f7faf8;
+  --cc-line: rgba(6, 78, 59, .12);
+  --cc-shadow: 0 18px 50px rgba(6, 78, 59, .09);
 }
 
 * {
@@ -57,6 +64,10 @@ body { background: #f7faf8; color: #17352c; font-family: 'Inter', sans-serif; mi
 .shimmer-text { background: linear-gradient(100deg, #064e3b 30%, #34d399 50%, #064e3b 70%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 5s linear infinite; }
 .interactive-card { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
 .interactive-card:hover { transform: translateY(-7px); box-shadow: 0 24px 56px rgba(6, 78, 59, .13); border-color: rgba(16, 185, 129, .23); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
 
 .auth-shell { min-height:100vh; background:#052e2b; color:#fff; position:relative; overflow:hidden; }
 .auth-shell::before { content:""; position:absolute; inset:-25%; background:radial-gradient(circle at 18% 35%,rgba(52,211,153,.4),transparent 22%),radial-gradient(circle at 86% 70%,rgba(20,184,166,.3),transparent 26%); animation:drift 16s ease-in-out infinite alternate; }

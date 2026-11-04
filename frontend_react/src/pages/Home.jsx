@@ -111,7 +111,7 @@ export default function Home({ apiOnline, statusColor }) {
           </motion.div>
 
           <motion.div variants={itemVariants} className="grid grid-cols-3 gap-3 w-full max-w-3xl mb-10">
-            {[{ icon: ScanLine, value: "2,852", label: "signals read" }, { icon: Gauge, value: "< 1 sec", label: "scan response" }, { icon: Leaf, value: "4 crops", label: "in library" }].map(({ icon: Icon, value, label }) => <div key={label} className="interactive-card rounded-2xl bg-white/70 border border-white p-4 text-left"><Icon className="w-4 h-4 text-emerald-600 mb-3"/><div className="font-black text-emerald-950 text-lg leading-none">{value}</div><div className="text-[9px] uppercase tracking-widest font-black text-slate-400 mt-1">{label}</div></div>)}
+            {[{ icon: ScanLine, value: "2,852", label: "signals read" }, { icon: Gauge, value: "< 1 sec", label: "scan response" }, { icon: Leaf, value: "4 crops", label: "in library" }].map(({ icon, value, label }) => <div key={label} className="interactive-card rounded-2xl bg-white/70 border border-white p-4 text-left"><div className="w-4 h-4 text-emerald-600 mb-3">{icon === ScanLine ? "⌁" : icon === Gauge ? "◌" : "◒"}</div><div className="font-black text-emerald-950 text-lg leading-none">{value}</div><div className="text-[9px] uppercase tracking-widest font-black text-slate-400 mt-1">{label}</div></div>)}
           </motion.div>
 
           <motion.div variants={itemVariants} className="w-full max-w-4xl flex justify-center mb-20">
@@ -163,11 +163,11 @@ export default function Home({ apiOnline, statusColor }) {
                     { label: "Predictor API", icon: Activity }, 
                     { label: "Dataset Model", icon: Cpu }, 
                     { label: "Vision Pipeline", icon: ShieldCheck }
-                  ].map(({ label, icon: Icon }) => (
+                  ].map(({ label }) => (
                     <div key={label} className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                          <Icon className="w-5 h-5 text-white/40" />
+                          <span className="text-white/40 text-lg">•</span>
                         </div>
                         <span className="text-xs font-bold tracking-widest uppercase text-white/80">{label}</span>
                       </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
-import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User, LogOut, Menu, X } from "lucide-react";
+import { Home as HomeIcon, History as HistoryIcon, Library as LibraryIcon, Settings as SettingsIcon, Bell, PlusCircle, HelpCircle, User, LogOut, Menu, X, ArrowRight, ScanLine, BrainCircuit, Sprout } from "lucide-react";
 import { healthCheck } from "./api";
 import Home from "./pages/Home";
 import History from "./pages/History";
@@ -119,10 +119,40 @@ function AppContent({ onLogout }) {
           <Route path="/account" element={<Account />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <footer className="mx-5 md:mx-12 mt-16 mb-8 border-t border-emerald-900/10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[10px] font-black uppercase tracking-[.18em] text-emerald-900/40">
+          <span>CropCare · Field intelligence workspace</span>
+          <span>Local-first diagnostics · v2.0</span>
+        </footer>
       </main>
     </div>
   );
 }
+
+function Landing() {
+  return (
+    <div className="auth-shell min-h-screen">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-7">
+        <nav className="flex items-center justify-between">
+          <div className="flex items-center gap-3"><img src="/logo.svg" alt="CropCare logo" className="w-11 h-11 rounded-2xl" /><span className="text-2xl font-black tracking-tight">Crop<span className="text-emerald-400">Care</span></span></div>
+          <div className="flex items-center gap-3"><Link to="/login" className="px-5 py-3 rounded-xl text-sm font-bold text-white/70 hover:text-white transition-colors">Sign in</Link><Link to="/signup" className="px-5 py-3 rounded-xl bg-emerald-400 text-emerald-950 text-sm font-black hover:bg-white transition-colors">Create account</Link></div>
+        </nav>
+        <section className="grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center pt-24 pb-24">
+          <div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/10 text-emerald-300 text-[10px] font-black uppercase tracking-[.25em] mb-7"><span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Hybrid crop intelligence</div>
+            <h1 className="font-headline font-black text-6xl sm:text-8xl tracking-[-.08em] leading-[.88] mb-8">Healthier crops.<br/><span className="text-emerald-400">Clearer decisions.</span></h1>
+            <p className="text-lg sm:text-xl text-emerald-50/60 leading-relaxed max-w-xl mb-10">CropCare turns a simple leaf image into an explainable disease signal using visual features, texture analysis, and a local machine learning pipeline.</p>
+            <div className="flex flex-wrap gap-4"><Link to="/signup" className="inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-emerald-400 text-emerald-950 font-black hover:bg-white transition-all">Start a free scan <ArrowRight className="w-4 h-4" /></Link><a href="#how-it-works" className="px-7 py-4 rounded-2xl border border-white/15 text-white font-bold hover:bg-white/10 transition-all">See how it works</a></div>
+          </div>
+          <div className="relative"><div className="absolute -inset-6 rounded-[3rem] bg-emerald-400/10 blur-3xl" /><div className="relative rounded-[2.5rem] p-8 bg-white/10 border border-white/15 backdrop-blur-xl shadow-2xl"><div className="flex items-center justify-between mb-10"><span className="text-xs font-black uppercase tracking-[.2em] text-emerald-300">Live scan preview</span><span className="flex items-center gap-2 text-xs text-white/50"><span className="w-2 h-2 rounded-full bg-emerald-400" /> Engine ready</span></div><div className="h-64 rounded-3xl bg-gradient-to-br from-emerald-900 to-teal-700 flex items-center justify-center mb-6"><Sprout className="w-32 h-32 text-emerald-200/70" strokeWidth={1} /></div><div className="flex items-center justify-between"><div><div className="text-white font-black text-2xl">Tomato leaf</div><div className="text-white/40 text-sm">Texture + shape analysis</div></div><div className="text-right"><div className="text-emerald-300 font-black text-3xl">94.2%</div><div className="text-white/40 text-[10px] uppercase tracking-widest">confidence</div></div></div></div></div>
+        </section>
+        <section id="how-it-works" className="grid md:grid-cols-3 gap-5 pb-20"><Feature icon={ScanLine} title="Upload a leaf" text="Drop a clear JPG, PNG, or WEBP image into the scanner." /><Feature icon={BrainCircuit} title="Hybrid analysis" text="GLCM, HOG, and MobileNet features work together locally." /><Feature icon={Sprout} title="Act with clarity" text="Get a condition, confidence score, and treatment guidance." /></section>
+        <footer className="border-t border-white/10 pt-6 text-xs text-white/35 flex justify-between"><span>CropCare</span><span>Built for better field decisions</span></footer>
+      </div>
+    </div>
+  );
+}
+
+function Feature({ icon: Icon, title, text }) { return <div className="rounded-3xl bg-white/10 border border-white/10 p-7"><Icon className="w-6 h-6 text-emerald-300 mb-6" /><h3 className="text-white font-black text-lg mb-2">{title}</h3><p className="text-white/45 text-sm leading-relaxed">{text}</p></div>; }
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
@@ -144,9 +174,10 @@ export default function App() {
       <Routes>
         {!isLoggedIn ? (
           <>
+            <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login onLogin={handleLogin} />} />
             <Route path="/signup" element={<Signup onLogin={handleLogin} />} />
-            <Route path="*" element={<Navigate to="/login" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </>
         ) : (
           <Route path="*" element={<AppContent onLogout={handleLogout} />} />
