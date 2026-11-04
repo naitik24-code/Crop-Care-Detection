@@ -8,3 +8,4 @@ scikit-image
 lightgbm
 joblib
 matplotlib
+tensorflow-cpu==2.21.0
